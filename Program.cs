@@ -75,6 +75,7 @@ namespace blog_orm_structure_with_ef
 
         private static void ReadOneTag(BlogDataContext context)
         {
+            /* todos os métodos de listas tendem a executar as querys no banco */
             var tag = context.Tags.AsNoTracking().FirstOrDefault(x => x.Id == 2);
             Console.WriteLine(tag.Id + " - " + tag.Name);
         }
