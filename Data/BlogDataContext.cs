@@ -12,8 +12,8 @@ namespace blog_orm_structure_with_ef.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         // public DbSet<PostTag> PostTags { get; set; } //=> possuí chave composta
-        public DbSet<Role> Rules { get; set; }
-        public DbSet<Tag> Tags { get; set; }
+        // public DbSet<Role> Rules { get; set; }
+        // public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
         // public DbSet<UserRole> UserRoles { get; set; } //=> possuí chave composta
 
