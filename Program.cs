@@ -1,5 +1,6 @@
 using blog_orm_structure_with_ef.Data;
 using blog_orm_structure_with_ef.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace blog_orm_structure_with_ef
@@ -21,18 +22,19 @@ namespace blog_orm_structure_with_ef
                 /* deletando dados do banco */
                 // DeleteTag(context);
 
-                /* lendo os items */
-                ReadTags(context);
+                /* lendo os item(s) */
+                // ReadTags(context);
+                ReadOneTag(context);
 
                 /* About SaveChanges => Por motivos de performance, o EF permite 
                 trabalhar com os dados na memória e persistir (salvar) os dados todos de uma vez */
-                context.SaveChanges(); 
+                context.SaveChanges();
             }
         }
         private static void CreateTag(BlogDataContext context)
         {
             /* criando nova tag do banco */
-            var tag =  new Tag { Name = ".Net", Slug = "dotnet" };
+            var tag = new Tag { Name = ".Net", Slug = "dotnet" };
             context.Tags.Add(tag);
         }
 
@@ -63,12 +65,18 @@ namespace blog_orm_structure_with_ef
             /* lendo as tags do banco */
 
             // var tags = context.Tags; //=> faz uma referencia para a execução
-            var tags = context.Tags.ToList(); //=> faz a execução direta, sempre por último!!
+            var tags = context.Tags.AsNoTracking().ToList(); //=> faz a execução direta, sempre por último!!
 
             foreach (var tag in tags) //=> aqui é executado a query quando não usado o "ToList()"
             {
-                Console.WriteLine("- "+tag.Name);
+                Console.WriteLine("- " + tag.Name);
             }
+        }
+
+        private static void ReadOneTag(BlogDataContext context)
+        {
+            var tag = context.Tags.AsNoTracking().FirstOrDefault(x => x.Id == 2);
+            Console.WriteLine(tag.Id + " - " + tag.Name);
         }
     }
 }

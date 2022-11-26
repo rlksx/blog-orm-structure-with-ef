@@ -18,7 +18,7 @@ namespace blog_orm_structure_with_ef.Data
         // public DbSet<UserRole> UserRoles { get; set; } //=> possuí chave composta
 
         /* configura a connection string, quando classe é instanciada já é identificada! */
-        protected override void OnConfiguring(DbContextOptionsBuilder options) 
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlServer(@"Server=localhost,1433;Database=Blog;User ID=sa;Password=1q2w3e4r@#$;Trusted_Connection=False; TrustServerCertificate=True;");
     }
 }
