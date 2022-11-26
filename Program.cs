@@ -1,3 +1,5 @@
+using blog_orm_structure_with_ef.Data;
+
 namespace blog_orm_structure_with_ef
 {
     public class Program
@@ -5,6 +7,11 @@ namespace blog_orm_structure_with_ef
         static void Main(string[] args)
         {
             Console.Clear();
+
+            using (var context = new BlogDataContext())
+            {
+                
+            }
         }
     }
 }
