@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace blog_orm_structure_with_ef.Models
 {
-    [Table("Tag")]
+    [Table("Tag")] //=> buscará Tag no bando e não "Tags" como esta no DbSet.
     public class Tag
     {
         public int Id { get; set; }
